@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+<h1>Add New Property</h1>
+<hr>
+
+<form method="post" action="{{ url_for('createProperties') }}" enctype="multipart/form-data" novalidate>
+    {{ form.csrf_token }}
+    <div class="section">        
+        <b>{{ form.title.label(class="form-label") }}</b> {{ form.title(class="form-control custom-width") }}
+    </div>
+
+    <div class="section">        
+        <b>{{ form.description.label(class="form-label") }}</b> {{ form.description(class="form-control custom-width", rows="3") }}
+    </div>
+
+    <div class="section">        
+        <b>{{ form.bedroom.label(class="form-label") }}</b> {{ form.bedroom(class="form-control custom-width") }}
+    </div>
+
+    <div class="section">        
+        <b>{{ form.bathroom.label(class="form-label") }}</b> {{ form.bathroom(class="form-control custom-width") }}
+    </div>
+
+    <div class="section">        
+        <b>{{ form.price.label(class="form-label") }}</b> {{ form.price(class="form-control custom-width") }}
+    </div>
+
+    <div class="section">        
+        <b>{{ form.ptype.label(class="form-label") }}</b> {{ form.ptype(class="form-control custom-width") }}
+    </div>
+
+    <div class="section">        
+        <b>{{ form.location.label(class="form-label") }}</b> {{ form.location(class="form-control custom-width") }}
+    </div>
+
+    <div class="form-group">             
+        {{ form.photo.label(class="form-label") }}             
+        {{ form.photo(class="form-control") }}     
+    </div>       
+
+    <button type="submit">Add Property</button>
+
+</form>
+
+{% endblock %}
