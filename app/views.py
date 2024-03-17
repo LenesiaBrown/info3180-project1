@@ -16,11 +16,6 @@ from werkzeug.utils import secure_filename
 # Routing for your application.
 ###
 
-# @app.route('/uploads/<filename>')
-# def uploaded_file(filename):
-#     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
-
-
 @app.route('/')
 def home():
     """Render website's home page."""
@@ -36,31 +31,11 @@ def about():
 def createProperties():
     myform = AddPropertyForm()
 
-    # if request.method == 'POST' and myform.validate_on_submit():
-    #     title = myform.title.data
-    #     description = myform.description.data
-    #     bedroom = myform.bedroom.data
-    #     bathroom = myform.bathroom.data
-    #     price = myform.price.data
-    #     ptype = myform.ptype.data
-    #     location = myform.location.data
-    #     photo = myform.photo.data
-    #     submit = myform.submit.data
-
-    #     flash('A new property was successfully added!', 'success')
-    #     return redirect(url_for('home'))
-    # return render_template('createProperties.html', form=myform)
-
     if request.method == 'POST' and myform.validate_on_submit():
         
         photofile = myform.photo.data
         filename = secure_filename(photofile.filename)
-        photofile.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        #myform.photo.data.save(os.path.join('static/uploads', filename))
-
-        # photofile = photoform.pic.data
-        # filename = secure_filename(photofile.filename)
-        # photofile.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        photofile.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))       
 
         property = Property(title=myform.title.data, bedrooms=myform.bedroom.data,
                             bathrooms=myform.bathroom.data, location=myform.location.data,

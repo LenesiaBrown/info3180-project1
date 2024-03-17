@@ -1,6 +1,4 @@
 from . import db
-#from werkzeug.security import generate_password_hash
-
 
 class Property(db.Model):
     __tablename__ = 'properties'
